@@ -1,0 +1,17 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(Get-ChildItem -Path \"C:\\\\Proyectos Personales\\\\backend-creaciones\" -Recurse -Directory -Name)",
+      "Bash(Select-String -Pattern \"model\" -AllMatches)",
+      "Bash(Get-ChildItem -Path \"C:\\\\Proyectos Personales\\\\backend-creaciones\\\\src\" -Recurse -Force)",
+      "Bash(Select-Object -Property FullName)",
+      "Bash(Sort-Object FullName)",
+      "Bash(Get-ChildItem -Path \"C:\\\\Proyectos Personales\\\\backend-creaciones\" -Recurse -Depth 3)",
+      "Bash(Select-Object FullName)",
+      "Bash(ls -la \"/mnt/c/Proyectos Personales/backend-creaciones/\" 2>&1 | head -20)",
+      "Read(//c/Proyectos Personales/**)",
+      "Bash(dir /s)",
+      "Bash(npm install *)"
+    ]
+  }
+}
