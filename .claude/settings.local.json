@@ -11,7 +11,12 @@
       "Bash(ls -la \"/mnt/c/Proyectos Personales/backend-creaciones/\" 2>&1 | head -20)",
       "Read(//c/Proyectos Personales/**)",
       "Bash(dir /s)",
-      "Bash(npm install *)"
+      "Bash(npm install *)",
+      "Bash(sed -i \"s|import API_URL from '../../config';|import API_URL from '../config';|\" \"C:/Proyectos Personales/creaciones/src/components/ModalCategoria.jsx\")",
+      "Bash(sed -i \"s|import API_URL from '../../config';|import API_URL from '../config';|\" \"C:/Proyectos Personales/creaciones/src/components/ModalProducto.jsx\")",
+      "WebFetch(domain:hytalemodding.dev)",
+      "Bash(git add *)",
+      "Bash(git commit -m ' *)"
     ]
   }
 }
