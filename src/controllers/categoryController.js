@@ -59,6 +59,18 @@ exports.updateCategory = async (req, res) => {
     }
 };
 
+exports.reorderCategories = async (req, res) => {
+    try {
+        const { orden } = req.body; // [{ id, orden }, ...]
+        await Promise.all(orden.map(({ id, orden }) =>
+            Category.findByIdAndUpdate(id, { orden })
+        ));
+        res.status(200).json({ message: 'Orden actualizado' });
+    } catch (error) {
+        res.status(500).json({ message: 'Error al reordenar', error: error.message });
+    }
+};
+
 exports.deleteCategory = async (req, res) => {
     try {
         const deletedCategory = await Category.findByIdAndDelete(req.params.id);

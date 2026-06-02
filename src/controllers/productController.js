@@ -9,6 +9,9 @@ exports.createProduct = async (req, res) => {
 
         const imagenesUrls = req.files ? req.files.map(file => file.path) : [];
 
+        const ultimo = await Product.findOne().sort({ orden: -1 });
+        const nuevoOrden = ultimo ? ultimo.orden + 1 : 0;
+
         const newProduct = new Product({
             nombre,
             descripcionCorta,
@@ -27,7 +30,8 @@ exports.createProduct = async (req, res) => {
             slug,
             tags: tagsParseados,
             atributos: atributosParseados,
-            imagenes: imagenesUrls
+            imagenes: imagenesUrls,
+            orden: nuevoOrden
         });
 
         await newProduct.save();
@@ -140,6 +144,18 @@ exports.toggleVisible = async (req, res) => {
     } catch (error) {
         console.error("Error al cambiar visibilidad:", error);
         res.status(500).json({ message: "Error al cambiar visibilidad", error: error.message });
+    }
+};
+
+exports.reorderProducts = async (req, res) => {
+    try {
+        const { orden } = req.body; // [{ id, orden }, ...]
+        await Promise.all(orden.map(({ id, orden }) =>
+            Product.findByIdAndUpdate(id, { orden })
+        ));
+        res.status(200).json({ message: 'Orden actualizado' });
+    } catch (error) {
+        res.status(500).json({ message: 'Error al reordenar', error: error.message });
     }
 };
 

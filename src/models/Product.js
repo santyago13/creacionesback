@@ -62,12 +62,16 @@ const ProductSchema = new mongoose.Schema({
         type: [String],
         default: [] 
     },
-    slug: { 
-        type: String, 
-        required: true, 
-        unique: true 
+    slug: {
+        type: String,
+        required: true,
+        unique: true
+    },
+    orden: {
+        type: Number,
+        default: 0
     }
-}, { 
+}, {
     timestamps: true
 });
 

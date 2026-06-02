@@ -12,5 +12,6 @@ router.put('/:id', verificarToken, upload.array('imagenes', 5), productControlle
 router.delete('/:id', verificarToken, productController.deleteProduct);
 router.patch('/:id/toggle', verificarToken, productController.toggleDisponible);
 router.patch('/:id/toggle-visible', verificarToken, productController.toggleVisible);
+router.patch('/reorder/bulk', verificarToken, productController.reorderProducts);
 
 module.exports = router;
